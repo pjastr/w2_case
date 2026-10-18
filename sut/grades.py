@@ -1,22 +1,22 @@
 """Ocena z przedmiotu na podstawie procentu zdobytych punktów."""
 
 
-def ocena_z_procentow(procent):
+def grade_from_percent(percent):
     """Zwraca ocenę (float) dla procentu punktów 0-100.
 
     Wymagania: SPECYFIKACJA.md, punkty OC-1 ... OC-4.
     """
-    procent = int(procent)
-    if procent < 0 or procent > 100:
+    percent = int(percent)
+    if percent < 0 or percent > 100:
         raise ValueError("procent musi być z zakresu 0-100")
-    if procent >= 90:
+    if percent >= 90:
         return 5.0
-    if procent > 80:
+    if percent > 80:
         return 4.5
-    if procent > 70:
+    if percent > 70:
         return 4.0
-    if procent > 60:
+    if percent > 60:
         return 3.5
-    if procent > 50:
+    if percent > 50:
         return 3.0
     return 2.0

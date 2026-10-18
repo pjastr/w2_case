@@ -1,14 +1,14 @@
 """Pierwsze testy – sprawdzenie, czy pytest działa w projekcie."""
 
 
-def dodaj(a, b):
+def add(a, b):
     return a + b
 
 
-def test_dodawanie_liczb_calkowitych():
-    assert dodaj(2, 3) == 5
+def test_add_integers():
+    assert add(2, 3) == 5
 
 
-def test_dodawanie_ulamkow():
+def test_add_floats():
     # Ten test celowo NIE przechodzi – przeczytaj raport pytest!
-    assert dodaj(0.1, 0.2) == 0.3
+    assert add(0.1, 0.2) == 0.3

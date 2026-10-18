@@ -3,9 +3,9 @@
 Testy projektujemy WYŁĄCZNIE na podstawie pliku SPECYFIKACJA.md.
 Nie czytaj kodu w tym katalogu przed zakończeniem ćwiczenia.
 """
-from .hasla import waliduj_haslo
-from .oceny import ocena_z_procentow
-from .parking import oplata_parkingowa
+from .passwords import validate_password
+from .grades import grade_from_percent
+from .parking import parking_fee
 
-__all__ = ["ocena_z_procentow", "oplata_parkingowa",
-           "waliduj_haslo"]
+__all__ = ["grade_from_percent", "parking_fee",
+           "validate_password"]

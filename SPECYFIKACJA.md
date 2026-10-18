@@ -4,19 +4,19 @@ Pakiet `sut` udostępnia trzy funkcje. Testy projektujemy **wyłącznie na podst
 tego dokumentu** (testowanie czarnoskrzynkowe) – nie zaglądamy do kodu źródłowego.
 
 ```python
-from sut import ocena_z_procentow, oplata_parkingowa, waliduj_haslo
+from sut import grade_from_percent, parking_fee, validate_password
 ```
 
 ---
 
-## 1. `ocena_z_procentow(procent)` – ocena z przedmiotu
+## 1. `grade_from_percent(percent)` – ocena z przedmiotu
 
 Funkcja wyznacza ocenę końcową na podstawie procentu zdobytych punktów
 (progi z regulaminu przedmiotu).
 
 | ID   | Wymaganie |
 |------|-----------|
-| OC-1 | Argument `procent` to liczba całkowita typu `int` z zakresu 0–100 (włącznie). |
+| OC-1 | Argument `percent` to liczba całkowita typu `int` z zakresu 0–100 (włącznie). |
 | OC-2 | Funkcja zwraca ocenę jako liczbę typu `float` zgodnie z tabelą progów poniżej. |
 | OC-3 | Dla wartości typu `int` spoza zakresu 0–100 funkcja zgłasza wyjątek `ValueError`. |
 | OC-4 | Dla argumentu innego typu niż `int` (np. `float`, `str`, `None`, `bool`) funkcja zgłasza wyjątek `TypeError`. Wartość nie jest zaokrąglana ani konwertowana. |
@@ -30,37 +30,37 @@ Funkcja wyznacza ocenę końcową na podstawie procentu zdobytych punktów
 | 81–90           | dobry plus | `4.5` |
 | 91–100          | bardzo dobry | `5.0` |
 
-Przykład: `ocena_z_procentow(75)` → `4.0`.
+Przykład: `grade_from_percent(75)` → `4.0`.
 
 ---
 
-## 2. `oplata_parkingowa(minuty)` – opłata za parking
+## 2. `parking_fee(minutes)` – opłata za parking
 
 Funkcja oblicza opłatę (w złotych) za jednorazowy postój na parkingu uczelnianym.
 
 | ID   | Wymaganie |
 |------|-----------|
-| PK-1 | Argument `minuty` to czas postoju w pełnych minutach: liczba całkowita typu `int` z zakresu 0–1440 (maks. jedna doba). |
+| PK-1 | Argument `minutes` to czas postoju w pełnych minutach: liczba całkowita typu `int` z zakresu 0–1440 (maks. jedna doba). |
 | PK-2 | Postój trwający od 0 do 15 minut (włącznie) jest bezpłatny – opłata `0.0`. |
 | PK-3 | Postój od 16 do 180 minut: 5,00 zł za każdą **rozpoczętą** godzinę postoju, licząc od początku postoju (np. 16 min → `5.0`, 61 min → `10.0`). |
 | PK-4 | Postój dłuższy niż 180 minut (181–1440): stała opłata dobowa `20.0`. |
 | PK-5 | Wartość typu `int` spoza zakresu 0–1440 → `ValueError`; argument innego typu niż `int` (np. `float`, `str`, `bool`) → `TypeError`. |
 
-Przykład: `oplata_parkingowa(150)` → `15.0` (rozpoczęte 3 godziny).
+Przykład: `parking_fee(150)` → `15.0` (rozpoczęte 3 godziny).
 
 ---
 
-## 3. `waliduj_haslo(haslo)` – walidacja hasła
+## 3. `validate_password(password)` – walidacja hasła
 
 Funkcja sprawdza, czy hasło podane przy zakładaniu konta spełnia reguły.
 
 | ID   | Wymaganie |
 |------|-----------|
-| HS-1 | Argument `haslo` jest napisem (`str`). Argument innego typu → `TypeError`. |
+| HS-1 | Argument `password` jest napisem (`str`). Argument innego typu → `TypeError`. |
 | HS-2 | Hasło ma długość od 8 do 20 znaków (włącznie). |
 | HS-3 | Hasło zawiera co najmniej jedną literę (dowolną, także polską, np. `ą`, `Ż`) i co najmniej jedną cyfrę. |
 | HS-4 | Poza tym hasło może zawierać **dowolne** znaki, w tym znaki specjalne (np. `#`, `!`, `@`) i spacje. |
 
 Funkcja zwraca `True`, gdy spełnione są HS-2 i HS-3 (przy HS-4), a w przeciwnym razie `False`.
 
-Przykład: `waliduj_haslo("haslo123")` → `True`, `waliduj_haslo("haslo")` → `False`.
+Przykład: `validate_password("haslo123")` → `True`, `validate_password("haslo")` → `False`.
